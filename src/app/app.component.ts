@@ -20,17 +20,23 @@ export class AppComponent implements OnInit {
         email: new FormControl('', [Validators.required, Validators.email]),
         password: new FormControl('', [
           Validators.required,
-          Validators.minLength(7),
-          Validators.pattern('^(?=.*[A-Za-z])(?=.*d)[A-Za-zd]{8,}$'),
+          Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{7,}$/),
         ]),
-        confirmPassword: new FormControl('', [
+        confirm: new FormControl('', [
           Validators.required,
-          Validators.minLength(7),
-          Validators.pattern('^(?=.*[A-Za-z])(?=.*d)[A-Za-zd]{8,}$'),
+          Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{7,}$/),
         ]),
-        nickname: new FormControl('', Validators.required),
+        nickname: new FormControl('', [
+          Validators.required,
+          Validators.pattern(/^[a-zA-Z0-9-]+$/),
+        ]),
         phoneNumber: new FormControl('', Validators.required),
-        website: new FormControl('', Validators.required),
+        website: new FormControl('', [
+          Validators.required,
+          Validators.pattern(
+            /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/
+          ),
+        ]),
         agreement: new FormControl('', Validators.required),
       },
       { validators: passwordValidator }
@@ -38,6 +44,6 @@ export class AppComponent implements OnInit {
   }
 
   public onClick(): void {
-    console.log(this.formGroup);
+    console.log(this.formGroup.value);
   }
 }

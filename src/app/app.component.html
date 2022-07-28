@@ -2,7 +2,7 @@
 
 <div class="form-div">
   <form [formGroup]="formGroup">
-    E-mail :
+    <span>* </span> E-mail :
     <input
       type="email"
       formControlName="email"
@@ -11,7 +11,7 @@
 
     <br />
 
-    Password :
+    <span>* </span> Password :
     <input
       type="password"
       formControlName="password"
@@ -20,16 +20,16 @@
 
     <br />
 
-    Confirm Password :
+    <span>* </span> Confirm Password :
     <input
       type="password"
-      formControlName="confirmPassword"
+      formControlName="confirm"
       placeholder="Confirm your password"
     />
 
     <br />
 
-    Nickname :
+    <span>* </span> Nickname :
     <input
       type="text"
       formControlName="nickname"
@@ -38,7 +38,7 @@
 
     <br />
 
-    Phone Number :
+    <span>* </span> Phone Number :
     <input
       type="tel"
       formControlName="phoneNumber"
@@ -47,18 +47,21 @@
 
     <br />
 
-    Website :
+    <span>* </span> Website :
     <input type="url" formControlName="website" placeholder="Website" />
 
     <br />
 
     <div>
-      <input type="checkbox" id="checkbox" /> I have read
+      <input type="checkbox" id="checkbox" formControlName="agreement" /> I have
+      read
       <a href="#">agreement</a>
 
       <br />
 
-      <button (click)="onClick()">Register</button>
+      <button [disabled]="formGroup.invalid" (click)="onClick()">
+        Register
+      </button>
     </div>
   </form>
 </div>
