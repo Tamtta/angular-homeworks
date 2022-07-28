@@ -12,6 +12,13 @@ export class AppComponent implements OnInit {
 
   formGroup = new FormGroup<any>('');
 
+  users: {
+    email: string;
+    nickname: string;
+    phoneNumber: string;
+    website: string;
+  }[] = [];
+
   constructor() {}
 
   ngOnInit(): void {
@@ -48,7 +55,23 @@ export class AppComponent implements OnInit {
     );
   }
 
-  public onClick(): void {
-    console.log(this.formGroup.value);
+  public onClick() {
+    let userInfo = {
+      email: this.formGroup.value.email,
+      nickname: this.formGroup.value.nickname,
+      phoneNumber: this.formGroup.value.phoneNumber,
+      website: this.formGroup.value.website,
+    };
+
+    this.users.push(userInfo);
+
+    console.log(this.users);
+    this.formGroup.reset();
+
+    return [...this.users];
   }
+
+  public updateUser() {}
+
+  public removeUser() {}
 }

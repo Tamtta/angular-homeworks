@@ -65,3 +65,25 @@
     </div>
   </form>
 </div>
+
+<ng-container *ngIf="users.length > 0"
+  ><table>
+    <tr>
+      <th>E-mail 📧</th>
+      <th>Nickname 📛</th>
+      <th>Phone Number 📞</th>
+      <th class="website">Website 🌐</th>
+      <th>Edit 📝</th>
+    </tr>
+    <tr *ngFor="let user of users">
+      <td>{{ user.email }}</td>
+      <td>{{ user.nickname }}</td>
+      <td>{{ user.phoneNumber }}</td>
+      <td class="website">{{ user.website }}</td>
+      <td>
+        <button (click)="updateUser()">Update</button>
+        <button (click)="removeUser()">Remove</button>
+      </td>
+    </tr>
+  </table></ng-container
+>

@@ -29,7 +29,7 @@ h3 {
 .form-div {
   width: 450px;
   align-items: center;
-  margin: 0 auto;
+  margin: 0 auto 100px auto;
   padding: 20px 20px;
 
   form {
@@ -71,6 +71,47 @@ h3 {
           background-color: rgba(0, 0, 255, 0.163);
           border-color: rgba(0, 0, 255, 0.163);
         }
+      }
+    }
+  }
+}
+
+table {
+  margin: 0 0 50px 30px;
+  table-layout: fixed;
+  display: inline-block;
+
+  tr {
+    th {
+      width: 250px;
+      text-align: start;
+      background-color: rgb(236, 230, 224);
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      padding: 7px;
+
+      .website {
+        width: 450px;
+      }
+
+      &:last-child {
+        width: 250px;
+      }
+    }
+
+    td {
+      width: 250px;
+      text-align: start;
+      background-color: rgb(251, 251, 251);
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      padding: 3px;
+      word-wrap: break-word;
+
+      .website {
+        width: 450px;
+      }
+
+      &:last-child {
+        width: 250px;
       }
     }
   }
