@@ -30,7 +30,12 @@ export class AppComponent implements OnInit {
           Validators.required,
           Validators.pattern(/^[a-zA-Z0-9-]+$/),
         ]),
-        phoneNumber: new FormControl('', Validators.required),
+        phoneNumber: new FormControl('', [
+          Validators.required,
+          Validators.pattern(
+            /^\+?([995]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{2})[-. ]?([0-9]{2})[-. ]?([0-9]{2})$/
+          ),
+        ]),
         website: new FormControl('', [
           Validators.required,
           Validators.pattern(
