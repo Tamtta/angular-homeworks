@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { USER } from './interface';
 import { passwordValidator } from './password-validator';
 
 @Component({
@@ -12,12 +13,21 @@ export class AppComponent implements OnInit {
 
   formGroup = new FormGroup<any>('');
 
-  users: {
-    email: string;
-    nickname: string;
-    phoneNumber: string;
-    website: string;
-  }[] = [];
+  users: USER[] = [];
+
+  passwordConfirmation: boolean = true;
+  editUserClicked: boolean = false;
+  isReseted: boolean = false;
+  isUpdated: boolean = false;
+  userMail: string = '';
+  reUsableID: string = '';
+
+  btnUpdate = document.getElementById(
+    'buttonUpdate'
+  ) as HTMLButtonElement | null;
+  btnRegister = document.getElementById(
+    'buttonRegister'
+  ) as HTMLButtonElement | null;
 
   constructor() {}
 
@@ -55,12 +65,16 @@ export class AppComponent implements OnInit {
     );
   }
 
-  public onClick() {
+  public onClick(): USER[] {
     let userInfo = {
+      id: `${Math.random().toString(36).substring(3, 11)}`,
       email: this.formGroup.value.email,
+      password: this.formGroup.value.password,
+      confirm: this.formGroup.value.confirm,
       nickname: this.formGroup.value.nickname,
       phoneNumber: this.formGroup.value.phoneNumber,
       website: this.formGroup.value.website,
+      agreement: this.formGroup.value.agreement,
     };
 
     this.users.push(userInfo);
@@ -71,7 +85,88 @@ export class AppComponent implements OnInit {
     return [...this.users];
   }
 
-  public updateUser() {}
+  public editUser(id: string) {
+    this.reUsableID = id;
+    const index = this.users.findIndex((p) => p.id == id);
+    const user = this.users[index];
+    this.formGroup.setValue({
+      email: user.email,
+      password: '',
+      confirm: '',
+      nickname: user.nickname,
+      phoneNumber: user.phoneNumber,
+      website: user.website,
+      agreement: true,
+    });
 
-  public removeUser() {}
+    if (user.agreement) {
+      this.formGroup.controls['agreement'].disable();
+    }
+    this.editUserClicked = true;
+    if (this.formGroup.valid && this.editUserClicked) {
+      this.btnRegister?.setAttribute('disabled', '');
+      this.btnUpdate?.removeAttribute('disabled');
+    }
+    // this.editUserClicked = false;
+
+    return this.formGroup;
+  }
+
+  public updateUser(): USER[] {
+    let userInfoUpdated = {
+      id: this.reUsableID,
+      email: this.formGroup.value.email,
+      password: this.formGroup.value.password,
+      confirm: this.formGroup.value.confirm,
+      nickname: this.formGroup.value.nickname,
+      phoneNumber: this.formGroup.value.phoneNumber,
+      website: this.formGroup.value.website,
+      agreement: this.formGroup.value.agreement,
+    };
+
+    const index = this.users.findIndex((p) => p.id == this.reUsableID);
+    const user = this.users[index];
+    if (
+      userInfoUpdated.password === user.password &&
+      userInfoUpdated.confirm === user.confirm
+    ) {
+      this.users = this.users.filter((p) => p.id != this.reUsableID);
+      this.users.push(userInfoUpdated);
+      console.log(this.users);
+      this.formGroup.reset();
+      this.isUpdated = true;
+      if (this.isUpdated) {
+        this.btnRegister?.removeAttribute('disabled');
+      }
+    } else {
+      this.passwordConfirmation = false;
+    }
+    if (!user.agreement) {
+      this.formGroup.controls['agreement'].enable();
+    }
+    this.isUpdated = false;
+    return [...this.users];
+  }
+
+  public cancel(): void {
+    this.formGroup.reset();
+    this.isReseted = true;
+    if (this.isReseted) {
+      this.btnRegister?.removeAttribute('disabled');
+    }
+    this.formGroup.controls['agreement'].enable();
+  }
+
+  public removeUser(id: string): void {
+    const index = this.users.findIndex((p) => p.id == id);
+    if (
+      confirm(
+        `This action will remove a user with this email: ${(this.userMail =
+          this.users[index].email)}. Are you sure? `
+      )
+    ) {
+      console.log('confirmed');
+      this.users = this.users.filter((p) => p.id != id);
+    }
+  }
 }
