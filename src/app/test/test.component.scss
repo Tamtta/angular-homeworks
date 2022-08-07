@@ -1,0 +1,28 @@
+h1 {
+  text-align: center;
+}
+
+div {
+  width: 400px;
+  margin: 0 auto;
+
+  h2 {
+    text-align: center;
+    color: red;
+  }
+
+  div {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+
+    button {
+      width: 100px;
+      height: 30px;
+      padding: 3px;
+      color: white;
+      background-color: black;
+      cursor: pointer;
+    }
+  }
+}

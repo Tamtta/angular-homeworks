@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { USER } from './interface';
+import { USER } from './interfaces/interface';
 import { passwordValidator } from './password-validator';
 
 @Component({
