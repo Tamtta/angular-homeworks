@@ -1,0 +1,40 @@
+h1 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.formDiv {
+  width: 724px;
+  height: auto;
+  margin: 0 auto 200px auto;
+  font-size: 13px;
+  // display: flex;
+  // justify-content: space-between;
+
+  .input {
+    display: flex;
+    justify-content: space-between;
+
+    div {
+      display: inline-block;
+
+      input {
+        display: inline-block;
+        height: 40px;
+        width: 290px;
+        border: 1px solid rgba(184, 184, 184, 0.498);
+        background-color: rgb(248, 252, 255);
+
+        &:focus {
+          outline: none;
+          border-color: rgba(184, 184, 184, 0.798);
+          background-color: rgba(230, 244, 255, 0.498);
+        }
+      }
+
+      p {
+        display: inline-block;
+      }
+    }
+  }
+}

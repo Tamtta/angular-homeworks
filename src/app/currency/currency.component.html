@@ -1,0 +1,51 @@
+<h1>Currency converter💰</h1>
+
+<div class="formDiv">
+  <form [formGroup]="currencyForms">
+    <div class="input">
+      <div>
+        Choose amount:
+        <input
+          type="number"
+          formControlName="currency1amount"
+          placeholder="Choose amount"
+          (ngModelChange)="onChangeVal1()"
+        />
+      </div>
+
+      <div>
+        <input
+          type="text"
+          formControlName="currency1"
+          placeholder="Choose first currency"
+          (keyup)="onKeySearchInp1()"
+        />
+      </div>
+    </div>
+
+    <br />
+
+    <div class="input">
+      <div>
+        Choose amount:
+        <input
+          type="number"
+          formControlName="currency2amount"
+          placeholder="Choose amount"
+          (ngModelChange)="onChangeVal2()"
+        />
+      </div>
+
+      <div>
+        <input
+          type="text"
+          formControlName="currency2"
+          placeholder="Choose second currency"
+          (keyup)="onKeySearchInp2()"
+        />
+      </div>
+    </div>
+
+    <!-- <button (click)="get()">click</button> -->
+  </form>
+</div>
