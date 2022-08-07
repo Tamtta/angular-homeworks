@@ -1,14 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import {
-  BehaviorSubject,
-  catchError,
-  tap,
-  map,
-  Subject,
-  retry,
-  of,
-} from 'rxjs';
+import { BehaviorSubject, catchError, tap, Subject } from 'rxjs';
 import { InterfaceRate } from '../interfaces/currency';
 import { CurrencyService } from '../services/currency.service';
 
@@ -27,8 +19,6 @@ export class CurrencyComponent implements OnInit {
   public errorOccured: Subject<boolean> = new Subject();
   public data: any;
   timeout: any = null;
-  firstValueChanged: boolean = false;
-  secondValueChanged: boolean = false;
 
   constructor(private currencyService: CurrencyService) {}
 
@@ -73,8 +63,6 @@ export class CurrencyComponent implements OnInit {
             this.currencyForms.value.currency1amount * res.conversion_rate,
         })
       );
-
-    // console.log(this.data);
   }
 
   public onChangeVal1() {
