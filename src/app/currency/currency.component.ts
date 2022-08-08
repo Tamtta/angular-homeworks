@@ -1,6 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { BehaviorSubject, catchError, tap, Subject } from 'rxjs';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BehaviorSubject, catchError, tap, Subject, of } from 'rxjs';
 import { InterfaceRate } from '../interfaces/currency';
 import { CurrencyService } from '../services/currency.service';
 
@@ -10,7 +15,7 @@ import { CurrencyService } from '../services/currency.service';
   styleUrls: ['./currency.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CurrencyComponent implements OnInit {
+export class CurrencyComponent implements OnInit, OnDestroy {
   currencyForms!: FormGroup;
 
   public rates: BehaviorSubject<InterfaceRate> = new BehaviorSubject({
@@ -24,9 +29,9 @@ export class CurrencyComponent implements OnInit {
 
   ngOnInit(): void {
     this.currencyForms = new FormGroup<any>({
-      currency1: new FormControl('USD'),
+      currency1: new FormControl('USD', Validators.maxLength(3)),
       currency1amount: new FormControl(0),
-      currency2: new FormControl(''),
+      currency2: new FormControl('', Validators.maxLength(3)),
       currency2amount: new FormControl(0),
     });
   }
@@ -53,7 +58,16 @@ export class CurrencyComponent implements OnInit {
         this.currencyForms.value.currency1,
         this.currencyForms.value.currency2
       )
-      .pipe(tap((response) => this.rates.next((this.data = response))))
+      .pipe(
+        tap((response) => this.rates.next((this.data = response))),
+        catchError(() => {
+          this.errorOccured.next(true);
+          alert('Hello, currency does not exist! Try again!💥');
+          return of({
+            conversion_rate: 0,
+          });
+        })
+      )
       .subscribe((res) =>
         this.currencyForms.setValue({
           currency1: this.currencyForms.value.currency1,
@@ -68,7 +82,14 @@ export class CurrencyComponent implements OnInit {
   public onChangeVal1() {
     this.currencyForms
       .get('currency1amount')
-      ?.valueChanges.subscribe((res) =>
+      ?.valueChanges.pipe(
+        catchError(() => {
+          this.errorOccured.next(true);
+          console.log('Hello, something went wrong!🐲');
+          return of([]);
+        })
+      )
+      .subscribe((res) =>
         this.currencyForms
           .get('currency2amount')
           ?.setValue(res * this.data.conversion_rate, { emitEvent: false })
@@ -76,12 +97,25 @@ export class CurrencyComponent implements OnInit {
   }
 
   public onChangeVal2() {
-    this.currencyForms.get('currency2amount')?.valueChanges.subscribe((res) =>
-      this.currencyForms
-        .get('currency1amount')
-        ?.setValue(res * (1 / this.data.conversion_rate), {
-          emitEvent: false,
+    this.currencyForms
+      .get('currency2amount')
+      ?.valueChanges.pipe(
+        catchError(() => {
+          this.errorOccured.next(true);
+          console.log('Hello, something went wrong!🐲');
+          return of([]);
         })
-    );
+      )
+      .subscribe((res) =>
+        this.currencyForms
+          .get('currency1amount')
+          ?.setValue(res * (1 / this.data.conversion_rate), {
+            emitEvent: false,
+          })
+      );
+  }
+
+  ngOnDestroy(): void {
+    this.rates.unsubscribe();
   }
 }
