@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { CurrencyComponent } from './currency/currency.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LocalserverComponent } from './localserver/localserver.component';
 
 @NgModule({
-  declarations: [AppComponent, TestComponent, CurrencyComponent],
+  declarations: [AppComponent, TestComponent, CurrencyComponent, LocalserverComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

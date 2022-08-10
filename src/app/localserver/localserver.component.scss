@@ -1,0 +1,131 @@
+h1 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.form-div {
+  width: 600px;
+  margin: 0 auto 50px auto;
+
+  form {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    input {
+      display: inline-block;
+      height: 40px;
+      width: 300px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(184, 184, 184, 0.498);
+      background-color: rgb(248, 252, 255);
+
+      &:focus {
+        outline: none;
+        border-color: rgba(184, 184, 184, 0.798);
+        background-color: rgba(230, 244, 255, 0.498);
+      }
+    }
+
+    .divbtns1 {
+      button {
+        height: 30px;
+        padding: 5px;
+        margin-right: 20px;
+        border-radius: 5%;
+        color: white;
+        background-color: rgb(0, 0, 0);
+        border-color: rgb(0, 0, 0);
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.206);
+          color: black;
+        }
+      }
+    }
+
+    .divbtns2 {
+      button {
+        width: 100px;
+        height: 30px;
+        padding: 5px;
+        margin-bottom: 20px;
+        border-radius: 5%;
+        color: white;
+
+        &:first-child {
+          background-color: green;
+          border-color: green;
+
+          &:hover {
+            background-color: rgba(0, 128, 0, 0.205);
+            color: black;
+          }
+        }
+
+        &:last-child {
+          background-color: rgb(210, 124, 124);
+          border-color: rgb(210, 124, 124);
+
+          &:hover {
+            background-color: rgba(210, 124, 124, 0.205);
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}
+
+table {
+  display: block;
+  width: 600px;
+  margin: 0 auto;
+
+  tr {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+
+    th {
+      border: 1px solid black;
+      width: 201px;
+      background-color: black;
+      color: white;
+    }
+
+    td {
+      border: 1px solid rgba(0, 0, 0, 0.306);
+      width: 201px;
+
+      button {
+        // display: inline-block;
+        padding: 5px;
+        margin-right: 10px;
+        font-size: 14px;
+        color: white;
+        border: none;
+      }
+
+      #editbtn {
+        background-color: black;
+        border: 1px solid black;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.206);
+          color: black;
+        }
+      }
+
+      #removebtn {
+        background-color: red;
+        border: 1px solid red;
+
+        &:hover {
+          background-color: rgba(255, 0, 0, 0.207);
+          color: black;
+        }
+      }
+    }
+  }
+}

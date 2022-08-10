@@ -1,0 +1,28 @@
+{
+  "employees": [
+    {
+      "name": "Tamta Jojua",
+      "salary": 3000000,
+      "age": 22,
+      "id": 1
+    },
+    {
+      "name": "Anano Tskhadadze ",
+      "salary": 1500000,
+      "age": 23,
+      "id": 2
+    },
+    {
+      "name": "rdfxc",
+      "salary": 46666,
+      "age": 6,
+      "id": 3
+    },
+    {
+      "name": "grfvftf",
+      "salary": 6556,
+      "age": 666,
+      "id": 4
+    }
+  ]
+}
