@@ -4,62 +4,79 @@ h1 {
 }
 
 .form-div {
-  width: 600px;
+  width: 620px;
   margin: 0 auto 50px auto;
 
   form {
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+    // justify-content: space-between;
+    // align-items: baseline;
 
-    input {
-      display: inline-block;
-      height: 40px;
-      width: 300px;
-      margin-bottom: 20px;
-      border: 1px solid rgba(184, 184, 184, 0.498);
-      background-color: rgb(248, 252, 255);
+    .innerContainer {
+      width: 400px;
 
-      &:focus {
-        outline: none;
-        border-color: rgba(184, 184, 184, 0.798);
-        background-color: rgba(230, 244, 255, 0.498);
+      input {
+        display: inline-block;
+        height: 40px;
+        width: 300px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(184, 184, 184, 0.498);
+        background-color: rgb(248, 252, 255);
+
+        &:focus {
+          outline: none;
+          border-color: rgba(184, 184, 184, 0.798);
+          background-color: rgba(230, 244, 255, 0.498);
+        }
       }
-    }
 
-    .divbtns1 {
-      button {
-        height: 30px;
-        padding: 5px;
-        margin-right: 20px;
-        border-radius: 5%;
-        color: white;
-        background-color: rgb(0, 0, 0);
-        border-color: rgb(0, 0, 0);
+      .divbtns1 {
+        button {
+          height: 30px;
+          padding: 5px;
+          margin-right: 20px;
+          border-radius: 5%;
+          color: white;
+          background-color: rgb(0, 0, 0);
+          border-color: rgb(0, 0, 0);
 
-        &:hover {
-          background-color: rgba(0, 0, 0, 0.206);
-          color: black;
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.206);
+            color: black;
+          }
+
+          &:disabled {
+            background-color: rgb(233, 233, 233);
+            border-color: rgb(233, 233, 233);
+          }
         }
       }
     }
 
     .divbtns2 {
+      display: flex;
+      align-items: flex-end;
+
       button {
         width: 100px;
         height: 30px;
         padding: 5px;
-        margin-bottom: 20px;
         border-radius: 5%;
         color: white;
 
         &:first-child {
           background-color: green;
           border-color: green;
+          margin-right: 20px;
 
           &:hover {
             background-color: rgba(0, 128, 0, 0.205);
             color: black;
+          }
+
+          &:disabled {
+            background-color: rgba(0, 128, 0, 0.205);
+            border-color: rgba(0, 128, 0, 0.205);
           }
         }
 
@@ -128,4 +145,11 @@ table {
       }
     }
   }
+}
+
+.pagination {
+  width: 600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
 }

@@ -16,6 +16,11 @@ export class LocalserverComponent implements OnInit {
     <IEmployee[]>[]
   );
   public oneEmployeeID!: number;
+  editBtnClicked: boolean = false;
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 5;
+  tableSizes: any = [5, 10, 15, 20];
 
   constructor(private localserver: LocalserverService) {}
 
@@ -25,16 +30,18 @@ export class LocalserverComponent implements OnInit {
       salary: new FormControl('', Validators.required),
       age: new FormControl('', Validators.required),
     });
+    this.getEmployees();
   }
 
-  addEmployee() {
+  public addEmployee() {
     this.localserver
       .addEmployeeService({
         name: this.formLocalServer.value.name,
         salary: this.formLocalServer.value.salary,
         age: this.formLocalServer.value.age,
       })
-      .subscribe(() => {
+      .subscribe((res) => {
+        this.employees.push(res);
         this.formLocalServer.reset();
       });
   }
@@ -50,7 +57,18 @@ export class LocalserverComponent implements OnInit {
       .subscribe();
   }
 
-  getEmployee(id: any) {
+  public onTableDataChange(event: any) {
+    this.page = event;
+    this.getEmployees();
+  }
+
+  public onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.getEmployees();
+  }
+
+  public getEmployee(id: any) {
     this.localserver
       .getEmployeeService(id)
       .pipe(
@@ -65,9 +83,10 @@ export class LocalserverComponent implements OnInit {
           age: res.age,
         })
       );
+    this.editBtnClicked = true;
   }
 
-  updateEmployee() {
+  public updateEmployee() {
     let update = {
       name: this.formLocalServer.value.name,
       salary: this.formLocalServer.value.salary,
@@ -85,13 +104,14 @@ export class LocalserverComponent implements OnInit {
           this.formLocalServer.reset()
         )
       );
+    this.editBtnClicked = false;
   }
 
-  cancel() {
+  public cancel() {
     this.formLocalServer.reset();
   }
 
-  deleteEmployee(id: any) {
+  public deleteEmployee(id: any) {
     this.localserver
       .deleteEmployeeService(id)
       .subscribe(

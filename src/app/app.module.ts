@@ -8,14 +8,21 @@ import { TestComponent } from './test/test.component';
 import { CurrencyComponent } from './currency/currency.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LocalserverComponent } from './localserver/localserver.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
-  declarations: [AppComponent, TestComponent, CurrencyComponent, LocalserverComponent],
+  declarations: [
+    AppComponent,
+    TestComponent,
+    CurrencyComponent,
+    LocalserverComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

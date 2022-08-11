@@ -2,7 +2,7 @@
 
 <div class="form-div">
   <form [formGroup]="formLocalServer">
-    <div>
+    <div class="innerContainer">
       Name:
       <input type="text" formControlName="name" placeholder="Enter your name" />
 
@@ -23,14 +23,20 @@
       <br />
 
       <div class="divbtns1">
-        <button (click)="addEmployee()">Register employee</button>
-        <button (click)="getEmployees()">List of registered employees!</button>
+        <button
+          (click)="addEmployee()"
+          [disabled]="formLocalServer.invalid || editBtnClicked"
+        >
+          Register employee
+        </button>
+        <!-- <button (click)="getEmployees()">List of registered employees!</button> -->
       </div>
     </div>
 
     <div class="divbtns2">
-      <button (click)="updateEmployee()">Update</button>
-      <br />
+      <button (click)="updateEmployee()" [disabled]="!editBtnClicked">
+        Update
+      </button>
       <button (click)="cancel()">Cancel</button>
     </div>
   </form>
@@ -43,7 +49,14 @@
     <th>Age</th>
     <th>Actions</th>
   </tr>
-  <tr *ngFor="let employee of employees">
+  <tr
+    *ngFor="
+      let employee of employees
+        | paginate
+          : { itemsPerPage: tableSize, currentPage: page, totalItems: count };
+      let i = index
+    "
+  >
     <td>{{ employee.name }}</td>
     <td>{{ employee.salary }}</td>
     <td>{{ employee.age }}</td>
@@ -55,3 +68,11 @@
     </td>
   </tr>
 </table>
+<div class="pagination">
+  <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    (pageChange)="onTableDataChange($event)"
+  >
+  </pagination-controls>
+</div>
