@@ -73,13 +73,15 @@ export class LocalserverComponent implements OnInit {
       salary: this.formLocalServer.value.salary,
       age: this.formLocalServer.value.age,
     };
+    const index = this.employees.findIndex((p) => p.id == this.oneEmployeeID);
+    const employee = this.employees[index];
     this.localserver
       .updateEmployeeService(this.oneEmployeeID, update)
       .subscribe(
         (res) => (
-          (this.employees[this.oneEmployeeID - 1].name = res.name),
-          (this.employees[this.oneEmployeeID - 1].salary = res.salary),
-          (this.employees[this.oneEmployeeID - 1].age = res.age),
+          (employee.name = res.name),
+          (employee.salary = res.salary),
+          (employee.age = res.age),
           this.formLocalServer.reset()
         )
       );
