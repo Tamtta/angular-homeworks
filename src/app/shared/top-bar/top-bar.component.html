@@ -1,0 +1,22 @@
+<div>
+  <div class="div-for-links">
+    <a routerLink="/employees">Employees</a>
+    <a routerLink="/users" *ngIf="loggedIn()">Users</a>
+    <a routerLink="/currency" *ngIf="salaryCheck()">Currency</a>
+  </div>
+
+  <div class="div-for-links">
+    <a routerLink="/login" *ngIf="!loggedIn()" class="a-link">Log in</a>
+    <a routerLink="/register" *ngIf="!loggedIn()" class="a-link">Register</a>
+    <a
+      routerLink="/logout"
+      *ngIf="loggedIn()"
+      (click)="salaryUncheck()"
+      (click)="loggedOut()"
+      class="a-link"
+      >Log out</a
+    >
+  </div>
+</div>
+
+<h1 *ngIf="loggedIn()">Hello, {{ user }} is logged in! 🎊</h1>

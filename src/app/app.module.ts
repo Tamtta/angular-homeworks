@@ -4,27 +4,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TestComponent } from './test/test.component';
-import { CurrencyComponent } from './currency/currency.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LocalserverComponent } from './localserver/localserver.component';
-import { NgxPaginationModule } from 'ngx-pagination';
+import { UsersComponent } from './features/users/users/users.component';
+import { TopBarComponent } from './shared/top-bar/top-bar.component';
+import { RouterModule } from '@angular/router';
+import { LoginComponent } from './features/login/loginComponent/login.component';
+import { TestComponent } from './features/test/testComponent/test.component';
+import { CoreModule } from './core/core.module';
+import { LoginService } from './features/login/login.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TestComponent,
-    CurrencyComponent,
-    LocalserverComponent,
-  ],
+  declarations: [AppComponent, TestComponent, TopBarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxPaginationModule,
+    RouterModule,
+    CoreModule,
   ],
-  providers: [],
+  providers: [LoginComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,0 +1,105 @@
+<table>
+  <tr>
+    <th class="id">ID</th>
+    <th>E-mail 📧</th>
+    <th>Nickname 📛</th>
+    <th>Phone Number 📞</th>
+    <th>Salary 💵</th>
+    <th class="website">Website 🌐</th>
+    <th>Edit 📝</th>
+  </tr>
+  <tr *ngFor="let user of users">
+    <td class="id">{{ user.id }}</td>
+    <td>{{ user.email }}</td>
+    <td>{{ user.nickname }}</td>
+    <td>{{ user.phoneNumber }}</td>
+    <td>{{ user.salary }}</td>
+    <td class="website">{{ user.website }}</td>
+    <td>
+      <button
+        (click)="getUser(user.id)"
+        [disabled]="!(user.email === authUser && user.salary === authUserS)"
+      >
+        Edit
+      </button>
+      <button
+        (click)="deleteUser(user.id)"
+        [disabled]="!(user.email === authUser && user.salary === authUserS)"
+      >
+        Remove
+      </button>
+    </td>
+  </tr>
+</table>
+
+<<ng-container *ngIf="editBtnClicked">
+  <div class="form-div">
+    <form [formGroup]="registerForm">
+      <span>* </span> E-mail :
+      <input
+        type="email"
+        formControlName="email"
+        placeholder="Enter your e-mail"
+      />
+
+      <br />
+
+      <span>* </span> Password :
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="Enter your password"
+      />
+
+      <br />
+
+      <span>* </span> Confirm Password :
+      <input
+        type="password"
+        formControlName="confirm"
+        placeholder="Confirm your password"
+      />
+
+      <br />
+
+      <span>* </span> Nickname :
+      <input
+        type="text"
+        formControlName="nickname"
+        placeholder="Enter your nickname"
+      />
+
+      <br />
+
+      <span>* </span> Phone Number :
+      <input
+        type="tel"
+        formControlName="phoneNumber"
+        placeholder="Enter your phone number"
+      />
+
+      <br />
+
+      <span>* </span> Salary :
+      <input type="number" formControlName="salary" placeholder="Salary" />
+
+      <br />
+
+      <span>* </span> Website :
+      <input type="url" formControlName="website" placeholder="Website" />
+
+      <br />
+
+      <div>
+        <input type="checkbox" id="checkbox" formControlName="agreement" />
+        I have read
+        <a href="#">agreement</a>
+
+        <br />
+
+        <button (click)="updateUser()">Update</button>
+        <button (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</ng-container>

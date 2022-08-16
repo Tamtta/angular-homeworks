@@ -1,0 +1,77 @@
+<h1>Local server app!🐲</h1>
+
+<div class="form-div">
+  <form [formGroup]="formLocalServer">
+    <div class="innerContainer">
+      Name:
+      <input type="text" formControlName="name" placeholder="Enter your name" />
+
+      <br />
+
+      Salary details:
+      <input
+        type="number"
+        formControlName="salary"
+        placeholder="Enter your salary details"
+      />
+
+      <br />
+
+      Age:
+      <input type="number" formControlName="age" placeholder="Enter your age" />
+
+      <br />
+
+      <div class="divbtns1">
+        <button
+          (click)="addEmployee()"
+          [disabled]="formLocalServer.invalid || editBtnClicked"
+        >
+          Register employee
+        </button>
+      </div>
+    </div>
+
+    <div class="divbtns2">
+      <button (click)="updateEmployee()" [disabled]="!editBtnClicked">
+        Update
+      </button>
+      <button (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Salary</th>
+    <th>Age</th>
+    <th>Actions</th>
+  </tr>
+  <tr
+    *ngFor="
+      let employee of employees
+        | paginate
+          : { itemsPerPage: tableSize, currentPage: page, totalItems: count };
+      let i = index
+    "
+  >
+    <td>{{ employee.name }}</td>
+    <td>{{ employee.salary }}</td>
+    <td>{{ employee.age }}</td>
+    <td>
+      <button (click)="getEmployee(employee.id)" id="editbtn">Edit</button>
+      <button (click)="deleteEmployee(employee.id)" id="removebtn">
+        Remove
+      </button>
+    </td>
+  </tr>
+</table>
+<div class="pagination">
+  <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    (pageChange)="onTableDataChange($event)"
+  >
+  </pagination-controls>
+</div>

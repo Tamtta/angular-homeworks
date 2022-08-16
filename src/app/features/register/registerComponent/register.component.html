@@ -1,0 +1,73 @@
+<h3>Register</h3>
+<div class="form-div">
+  <form [formGroup]="registerForm">
+    <span>* </span> E-mail :
+    <input
+      type="email"
+      formControlName="email"
+      placeholder="Enter your e-mail"
+    />
+
+    <br />
+
+    <span>* </span> Password :
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Enter your password"
+    />
+
+    <br />
+
+    <span>* </span> Confirm Password :
+    <input
+      type="password"
+      formControlName="confirm"
+      placeholder="Confirm your password"
+    />
+
+    <br />
+
+    <span>* </span> Nickname :
+    <input
+      type="text"
+      formControlName="nickname"
+      placeholder="Enter your nickname"
+    />
+
+    <br />
+
+    <span>* </span> Phone Number :
+    <input
+      type="tel"
+      formControlName="phoneNumber"
+      placeholder="Enter your phone number"
+    />
+
+    <br />
+
+    <span>* </span> Salary :
+    <input type="number" formControlName="salary" placeholder="Salary" />
+
+    <br />
+
+    <span>* </span> Website :
+    <input type="url" formControlName="website" placeholder="Website" />
+
+    <br />
+
+    <div>
+      <input type="checkbox" id="checkbox" formControlName="agreement" /> I have
+      read
+      <a href="#">agreement</a>
+
+      <br />
+
+      <button [disabled]="registerForm.invalid" (click)="addUser()">
+        Register
+      </button>
+    </div>
+  </form>
+</div>
+
+

@@ -1,0 +1,27 @@
+<h3>Login</h3>
+<div class="form-div">
+  <form [formGroup]="loginForm">
+    E-mail :
+    <input
+      type="email"
+      formControlName="email"
+      placeholder="Enter your e-mail"
+    />
+
+    <br />
+
+    Password
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Enter your password"
+    />
+
+    <br />
+
+    <button (click)="validateUser()" [disabled]="!loginForm.valid">
+      Log in
+    </button>
+    <button>Cancel</button>
+  </form>
+</div>
