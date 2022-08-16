@@ -232,13 +232,23 @@
     },
     {
       "email": "tbc123@gmail.com",
-      "password": "tbc123456",
-      "confirm": "tbc123456",
+      "password": "",
+      "confirm": "",
       "nickname": "HOWTOFIXERROOOOOOOOOR",
       "phoneNumber": "+995555113333",
       "salary": 500,
-      "website": "https://stackoverflow.com/questions/54468097/how-to-fix-error-listen-eaddrinuse-address-already-in-use-5000-unhandled",
+      "website": "https://stackoverflow.com/",
       "id": 9
+    },
+    {
+      "email": "1234.tamta@gmail.com",
+      "password": "",
+      "confirm": "",
+      "nickname": "asd",
+      "phoneNumber": "+995555112233",
+      "salary": 20,
+      "website": "https://www.facebook.com/Iliauni/posts/",
+      "id": 10
     }
   ]
 }

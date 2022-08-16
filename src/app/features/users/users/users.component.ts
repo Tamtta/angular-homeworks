@@ -15,8 +15,6 @@ export class UsersComponent implements OnInit {
   public users: USER[] = [];
   userID!: number;
   editBtnClicked: boolean = false;
-  public authUser = localStorage.getItem('mail');
-  public authUserS = JSON.parse(localStorage.getItem('salary')!);
   public usersSubject: BehaviorSubject<USER[]> = new BehaviorSubject(
     <USER[]>[]
   );
@@ -139,5 +137,12 @@ export class UsersComponent implements OnInit {
           (this.users = this.users.filter((p) => p.id != id))
         )
       );
+  }
+
+  public authUser() {
+    return localStorage.getItem('mail');
+  }
+  public authUserS() {
+    return JSON.parse(localStorage.getItem('salary')!);
   }
 }
