@@ -10,11 +10,11 @@ import { LoginComponent } from '../../features/login/loginComponent/login.compon
   styleUrls: ['./top-bar.component.scss'],
 })
 export class TopBarComponent implements OnInit {
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   user = localStorage.getItem('mail');
+  // url = this.router.url === '/404';
 
-  // userSalary = this.loginComponent.userToken.salary;
   ngOnInit(): void {}
 
   loggedIn() {

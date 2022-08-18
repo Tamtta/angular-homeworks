@@ -18,13 +18,13 @@
     <td>
       <button
         (click)="getUser(user.id)"
-        [disabled]="!(user.email === authUser() && user.salary === authUserS())"
+        *ngIf="user.email === authUser() && user.salary === authUserS()"
       >
         Edit
       </button>
       <button
         (click)="deleteUser(user.id)"
-        [disabled]="!(user.email === authUser() && user.salary === authUserS())"
+        *ngIf="user.email === authUser() && user.salary === authUserS()"
       >
         Remove
       </button>

@@ -1,7 +1,2 @@
-<!-- <app-forms></app-forms>
-<app-login></app-login>
-<app-test></app-test>
-<app-currency></app-currency>
-<app-localserver></app-localserver> -->
-<app-top-bar></app-top-bar>
+<app-top-bar *ngIf="!urlCheck()"></app-top-bar>
 <router-outlet></router-outlet>

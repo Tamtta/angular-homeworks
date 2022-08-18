@@ -8,7 +8,6 @@ export class LoginService {
   constructor(private router: Router) {}
 
   isLoggedIn: boolean = false;
-  authUser: boolean = false;
 
   public loginUser(
     enteredEmail: any,
@@ -24,11 +23,4 @@ export class LoginService {
       alert('incorrect email or password! try again 💥');
     }
   }
-
-  // public editUserAccess(email: string) {
-  //   // return this.authUser;
-  //   console.log('wee');
-  //   return email === localStorage.getItem('mail');
-  //   // this.authUser = email === localStorage.getItem('mail');
-  // }
 }

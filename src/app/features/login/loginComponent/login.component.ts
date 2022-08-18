@@ -60,4 +60,8 @@ export class LoginComponent implements OnInit {
       console.log(localStorage);
     }
   }
+
+  public cancel() {
+    this.loginForm.reset();
+  }
 }

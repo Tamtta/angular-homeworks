@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthUserGuard } from './core/guards/auth-user.guard';
+import { CurrencyGuard } from './core/guards/currency.guard';
 import { LoginGuard } from './core/guards/login.guard';
-import { UsersComponent } from './features/users/users/users.component';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -39,9 +40,11 @@ const routes: Routes = [
       import('./features/currency/currency.module').then(
         (m) => m.CurrencyModule
       ),
-    canActivate: [LoginGuard],
+    canActivate: [LoginGuard, CurrencyGuard],
   },
   { path: 'logout', redirectTo: 'login', pathMatch: 'full' },
+  { path: '404', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({

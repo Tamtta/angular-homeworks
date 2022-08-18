@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthUserGuard implements CanActivate {
+export class CurrencyGuard implements CanActivate {
   constructor(private router: Router) {}
 
   canActivate(
@@ -22,11 +22,11 @@ export class AuthUserGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (localStorage.getItem('mail')) {
-      console.log('auth-user guard is activated!');
+    if (JSON.parse(localStorage.getItem('salary')!) < 400) {
+      console.log('currency guard is activated!');
+      this.router.navigate(['/users']);
       return false;
     }
-
     return true;
   }
 }

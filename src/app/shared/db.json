@@ -189,16 +189,6 @@
   ],
   "users": [
     {
-      "email": "jojua.tamta99@gmail.com",
-      "password": "",
-      "confirm": "",
-      "nickname": "dgd",
-      "phoneNumber": "+995123121212",
-      "salary": 60,
-      "website": "https://angular.io/api/router/CanDeactivate",
-      "id": 2
-    },
-    {
       "email": "tajsa@gmail.com",
       "password": "wowwow123",
       "confirm": "wowwow123",
@@ -221,34 +211,14 @@
       "id": 7
     },
     {
-      "email": "papavalata@gmail.com",
-      "password": "",
-      "confirm": "",
-      "nickname": "register",
-      "phoneNumber": "+995555112288",
-      "salary": 50000,
-      "website": "https://wiki.evolution.com/#all-updates",
-      "id": 8
-    },
-    {
-      "email": "tbc123@gmail.com",
-      "password": "",
-      "confirm": "",
-      "nickname": "HOWTOFIXERROOOOOOOOOR",
-      "phoneNumber": "+995555113333",
-      "salary": 500,
-      "website": "https://stackoverflow.com/",
-      "id": 9
-    },
-    {
-      "email": "1234.tamta@gmail.com",
-      "password": "",
-      "confirm": "",
-      "nickname": "asd",
-      "phoneNumber": "+995555112233",
-      "salary": 20,
-      "website": "https://www.facebook.com/Iliauni/posts/",
-      "id": 10
+      "email": "tamta99@gmail.com",
+      "password": "12345678W",
+      "confirm": "12345678W",
+      "nickname": "dcvx",
+      "phoneNumber": "+995555118865",
+      "salary": 1000,
+      "website": "www.messenger.com",
+      "id": 11
     }
   ]
 }
