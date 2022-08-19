@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, observable } from 'rxjs';
 import { LoginService } from '../../features/login/login.service';
-import { LoginComponent } from '../../features/login/loginComponent/login.component';
 
 @Component({
   selector: 'app-top-bar',
@@ -13,7 +11,6 @@ export class TopBarComponent implements OnInit {
   constructor(private loginService: LoginService, private router: Router) {}
 
   user = localStorage.getItem('mail');
-  // url = this.router.url === '/404';
 
   ngOnInit(): void {}
 
